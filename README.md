@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nowshad Jawad — Portfolio
 
-## Getting Started
+Minimal portfolio for a Builder-Writer focused on AI automation, WordPress plugins, and full-stack PHP/Python development.
 
-First, run the development server:
+## Development
 
 ```bash
+npm install
+cp .env.example .env.local   # optional, for TMDB movie posters
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editing Content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| File | What to edit |
+|---|---|
+| `src/data/profile.ts` | Bio, skills, focus, social links |
+| `src/data/movies.ts` | Favorite films (TMDB IDs + your note) |
+| `src/data/playlists.ts` | YouTube playlist IDs, titles, categories |
 
-## Learn More
+### Movies (TMDB)
 
-To learn more about Next.js, take a look at the following resources:
+1. Get a free API key at [themoviedb.org/settings/api](https://www.themoviedb.org/settings/api)
+2. Add `TMDB_API_KEY=...` to `.env.local`
+3. Edit `src/data/movies.ts` — find IDs on TMDB (e.g. `/movie/603` → `tmdbId: 603`)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### YouTube Playlists
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Copy the `list=` value from any playlist URL
+2. Add entries to `src/data/playlists.ts` with category: `teaching`, `tech`, `music`, or `other`
+3. Visitors can play playlists on `/about`
 
-## Deploy on Vercel
+### GitHub Projects
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Public repos are fetched automatically from [@Jawad0501](https://github.com/Jawad0501) and refresh hourly.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploy to Vercel
+
+1. Push to GitHub
+2. Import at [vercel.com/new](https://vercel.com/new)
+3. Add `TMDB_API_KEY` in Vercel Environment Variables (optional)
+4. Deploy
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- TypeScript + Tailwind CSS v4
+- GitHub API, Medium RSS, TMDB API, YouTube embeds
+- Light/dark mode via next-themes
