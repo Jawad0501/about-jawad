@@ -32,6 +32,11 @@ export const caseStudies: CaseStudy[] = [
     tech: ["WordPress", "PHP", "REST API", "JavaScript"],
     links: [
       {
+        type: "live",
+        url: "https://wordpress.org/plugins/rest-api-route-tester/",
+        label: "WordPress.org",
+      },
+      {
         type: "repo",
         url: "https://github.com/Jawad0501/rest-api-route-tester",
         label: "View on GitHub",
@@ -131,7 +136,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "Interactive electrocardiogram waveform simulator for learning and demos.",
     description:
-      "A browser-based ECG waveform simulator built with HTML, JavaScript, and Canvas. Useful for visualizing heart rhythm patterns and demonstrating signal concepts without medical hardware.",
+      "A browser-based ECG waveform simulator built with HTML, JavaScript, and Canvas. The idea came from my friend Dr. Ahnaf Md Ishmamuzzaman Chowdhury (JRRMC 24) — useful for visualizing heart rhythm patterns and demonstrating signal concepts without medical hardware.",
     role: "Solo builder — canvas rendering, waveform logic",
     highlights: [
       "Real-time waveform visualization",
@@ -140,6 +145,11 @@ export const caseStudies: CaseStudy[] = [
     ],
     tech: ["HTML", "JavaScript", "Canvas"],
     links: [
+      {
+        type: "live",
+        url: "https://jawad0501.github.io/ecg-simulator/",
+        label: "Live demo",
+      },
       {
         type: "repo",
         url: "https://github.com/Jawad0501/ecg-simulator",

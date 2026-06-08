@@ -1,7 +1,7 @@
 export const profile = {
   name: "Nowshad Jawad",
   fullName: "Abu Nowshad Md Jawad",
-  title: "Software Engineer - Writer",
+  title: "Software Engineer - Technical Writer",
   focus:
     "AI automation and WordPress plugins — with full-stack PHP and Python when the problem needs it.",
   tagline:
