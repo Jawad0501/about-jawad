@@ -8,7 +8,7 @@ export async function Writing() {
   return (
     <section id="writing" className="py-24">
       <div className="mb-8 flex items-baseline justify-between gap-4">
-        <h2 className="font-serif text-2xl text-foreground">Writing</h2>
+        <h2 className="font-serif text-2xl text-foreground">Writings</h2>
         <a
           href={profile.links.medium}
           target="_blank"
