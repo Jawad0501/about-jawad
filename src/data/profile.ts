@@ -5,11 +5,11 @@ export const profile = {
   focus:
     "AI automation and WordPress plugins — with full-stack PHP and Python when the problem needs it.",
   tagline:
-    "I automate workflows, build WordPress plugins, and ship with Laravel, FastAPI, and Flask.",
+    "I build WordPress plugins and ship with Laravel, FastAPI, and Flask. Movie freak — always recommending films to friends and family. Love sharing tech finds too.",
   bio: "Software Engineer at AuthLab, where I work on WordPress products used by over a million businesses. My day-to-day centers on AI automation and plugin development; when a problem outgrows WordPress, I reach for Laravel, FastAPI, or Flask. I write about what I learn on Medium and share open repos on GitHub.",
   about: [
     "I'm a software engineer in Sylhet, building WordPress plugins at AuthLab — products that real businesses rely on every day. Most of my work sits at the intersection of WordPress, AI automation, and the occasional Laravel or Python side quest when a problem outgrows the CMS.",
-    "Away from the keyboard, I'm usually watching a film properly, queueing music for a long coding session, or saving a podcast or YouTube talk for later. This page is where I keep track of that stuff — the homepage is the résumé, down here is the personal side.",
+    "Away from the keyboard, I'm usually watching a film, queueing music for a long coding session, or saving a podcast or YouTube talk for later. This page is where I keep track of that stuff — the homepage is the résumé, down here is the personal side.",
   ],
   location: "Sylhet, Bangladesh",
   githubUsername: "Jawad0501",

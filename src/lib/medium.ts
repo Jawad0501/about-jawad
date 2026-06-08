@@ -6,6 +6,8 @@ export type MediumArticle = {
 };
 
 const MEDIUM_FEED_URL = "https://medium.com/feed/@anmjawad007";
+const PREVIEW_WORD_LIMIT = 80;
+const ARTICLE_LIMIT = 5;
 
 const FALLBACK_ARTICLES: MediumArticle[] = [
   {
@@ -60,14 +62,43 @@ function extractTag(xml: string, tag: string): string {
   return plainMatch ? plainMatch[1].trim() : "";
 }
 
+function extractContentEncoded(xml: string): string {
+  const cdataMatch = xml.match(
+    /<content:encoded><!\[CDATA\[([\s\S]*?)\]\]><\/content:encoded>/,
+  );
+  if (cdataMatch) return cdataMatch[1].trim();
+
+  const plainMatch = xml.match(
+    /<content:encoded>([\s\S]*?)<\/content:encoded>/,
+  );
+  return plainMatch ? plainMatch[1].trim() : "";
+}
+
+function normalizeWhitespace(text: string): string {
+  return text.replace(/\s+/g, " ").trim();
+}
+
+function truncateWords(text: string, limit: number): string {
+  const words = text.split(/\s+/).filter(Boolean);
+  if (words.length <= limit) return words.join(" ");
+  return `${words.slice(0, limit).join(" ")}...`;
+}
+
+function toPreview(html: string): string {
+  const plain = normalizeWhitespace(stripHtml(html));
+  if (!plain) return "";
+  return truncateWords(plain, PREVIEW_WORD_LIMIT);
+}
+
 function parseRssItems(xml: string): MediumArticle[] {
   const items = xml.match(/<item>[\s\S]*?<\/item>/g) ?? [];
 
-  return items.slice(0, 8).map((item) => {
+  return items.slice(0, ARTICLE_LIMIT).map((item) => {
     const title = stripHtml(extractTag(item, "title"));
     const link = extractTag(item, "link");
     const pubDate = extractTag(item, "pubDate");
-    const description = stripHtml(extractTag(item, "description"));
+    const content =
+      extractContentEncoded(item) || extractTag(item, "description");
 
     return {
       title,
@@ -79,10 +110,7 @@ function parseRssItems(xml: string): MediumArticle[] {
             day: "numeric",
           })
         : "",
-      excerpt:
-        description.length > 160
-          ? description.slice(0, 157) + "..."
-          : description,
+      excerpt: toPreview(content),
     };
   });
 }
