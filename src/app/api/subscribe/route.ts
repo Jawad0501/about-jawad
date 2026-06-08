@@ -27,8 +27,8 @@ export async function POST(request: Request) {
     return Response.json({ ok: true });
   }
 
-  const name = body.name?.trim() ?? "";
-  const email = body.email?.trim() ?? "";
+  const name = body.name?.trim().slice(0, 100) ?? "";
+  const email = body.email?.trim().slice(0, 254) ?? "";
   const interests = (body.interests ?? []).filter((id): id is NewsletterTopicId =>
     topicIds.has(id as NewsletterTopicId),
   );
@@ -52,10 +52,7 @@ export async function POST(request: Request) {
 
   if (!apiKey) {
     return Response.json(
-      {
-        error:
-          "Newsletter is not configured yet. Add RESEND_API_KEY to the server environment.",
-      },
+      { error: "Newsletter is temporarily unavailable. Try again later." },
       { status: 503 },
     );
   }
